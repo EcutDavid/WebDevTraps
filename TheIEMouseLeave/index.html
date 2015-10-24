@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!-- change log : solve select option fire event wrong -->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+        .dropMenu{
+          width: 200px;
+          height: 30px;
+          border: 1px solid;
+        }
+    </style>
+  </head>
+  <body>
+    <button type="button" name="button">Clik me</button>
+    <div class="dropMenu">
+      <select class="dropMenuSel" title="Select a Country">
+        <option value="USA" selected="selected">United States</option>
+        <option value="AUS">Australia</option>
+        <option value="GBR">United Kingdom</option>
+        <option value="IND">India</option>
+        <option value="IRL">Ireland</option>
+        <option value="NLD">Netherlands</option>
+        <option value="NZL">New Zealand</option>
+        <option value="POL">Poland</option>
+        <option value="SGP" Singapore</option>
+        <option value="CHN">China</option>
+        <option value="TWN">Taiwan</option>
+      </select>
+    </div>
+    <script type="text/javascript">
+      window.isChildSel = false;
+      document.querySelector('.dropMenu')
+        .addEventListener('mouseleave', function(){
+          //The magic statement
+          if (window.event.toElement == null) return;
+          if(!window.isChildSel)
+            console.log('REAL LEAVE');
+        })
+      // var dropOptions = document.querySelectorAll('.dropMenuSel option');
+      // for(var i = 0; i < dropOptions.length; i++){
+      //   dropOptions[i].addEventListener('mouseenter', function(){
+      //     window.isChildSel = true;
+      //   });
+      //   console.log('REAL LEAVE!');
+      //
+      // }
+
+      // document.querySelector('.dropMenuSel')
+      //   .addEventListener('mouseleave', function(){
+      //     console.log('REAL LEAVE!!');
+      //     window.isChildSel = false;
+      //   })
+    </script>
+  </body>
+</html>
